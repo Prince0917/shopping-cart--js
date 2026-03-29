@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <style>
+            body{
+                background-color:rgb(0, 0, 0);
+                display:flex;
+                justify-content:center;
+                height:100vh;
+                align-items:center;
+                margin:0;
+            }
+            h1{
+                color:white;
+                font-size:20px;
+                font-weight:bold;
+                font-family:sans-serif;
+
+            }
+            .card{
+                background-color:rgba(255,255,255,0.15);
+                backdrop-filter: blur(10px);
+                border:1px;
+                border:1px solid rgba(255,255,255,0.3);
+                border-radius:16px;
+                width:450px ;
+                padding:10px;
+                text-align:center;
+                align-items:center;
+                box-shadow:0px 0px 10px  #ccc;
+                transition:0.4s;
+            }
+            .card:hover{
+                box-shadow: 5px 5px 10px #ccc;
+                translate:translateY(-5px);
+            }
+            input{
+                width:80%;
+                border:1px solid #ccc;
+                border-radius:8px;
+                padding:10px;
+                outline:none;
+                color:white;
+                background:#ffffff1a;
+                margin-bottom:10px;
+                
+            }
+            #item{
+                color:white;
+                text-align:left;
+                padding:8px;
+                font-size:12px;
+                align-items:left;
+            }
+            #list{
+                color:white;
+                text-align:left;
+                padding:8px;
+                font-size:12px;
+                align-items:left;
+            }
+            #btn{
+                padding:10px 20px;
+                background:#4CAF50;
+                color:white;
+                border:none;
+                border-radius:7px;
+                cursor:pointer;
+                font-size:14pz;
+                margin-top:10px;
+                transition:0.3s;
+            }
+            #btn:hover{
+                background:#45a049;
+                transform:translateY(-5px);
+            }
+            li {
+                color: white;
+                list-style: none;
+                padding: 8px;
+                font-size:16px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            li button{
+                background-color:#e74c3c;
+                color:white;
+                border:none;
+                border-radius:6px;
+                padding: 5px 10px;
+                cursor:pointer;
+            }
+            li button:hover{
+                background:#c0392b;
+            }
+            .input-row {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+        </style>
+
+    </head>
+    <body>
+       <div class="card">
+        <h1>🛒 Shopping Cart</h1>
+        <div class="input-row">
+        <input type ="text",palce holder="items", id ="item"><br><br>
+        <button id="btn">Cart</button>
+        </div>
+        <ol id="list"></ol>
+        </div>
+
+        <script>
+
+            let item=document.getElementById("item");
+            let btn=document.getElementById("btn");
+            let list =document.getElementById("list");
+
+            btn.addEventListener("click",function(){
+                let li=document.createElement("li");
+                li.innerHTML=item.value;
+
+                let deleteBtn=document.createElement("button");
+                deleteBtn.innerHTML="Delete";
+
+                deleteBtn.addEventListener("click",function(){
+                    list.removeChild(li);
+                });
+
+
+                li.appendChild(deleteBtn);
+                list.appendChild(li);
+                item.value="";
+            });
+        </script>
+    </body>
+</html>
